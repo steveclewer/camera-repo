@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definition of new Model -->
+<model name="cam:cameramodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+    <!-- Optional meta-data about the model -->
+    <description>Camera Model</description>
+    <author>Steve Clewer</author>
+    <version>1.0</version>
+
+    <!-- Imports are required to allow references to definitions in other models -->
+    <imports>
+        <!-- Import Alfresco Dictionary Definitions -->
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+        <!-- Import Alfresco Content Domain Model Definitions -->
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+    </imports>
+
+    <!-- Introduction of new name spaces defined by this model -->
+    <namespaces>
+        <namespace uri="http://www.someco.com/model/content/1.0" prefix="cam" />
+    </namespaces>
+
+    <constraints>
+       <constraint name="cam:camera_model_list" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Canon 5D Mk II</value>
+                    <value>Canon 5D</value>
+                    <value>Canon 70D</value>
+                    <value>Canon 700D</value>
+                    <value>Canon 650D</value>
+                    <value>Canon 600D</value>
+                    <value>Canon 1200D</value>
+                    <value>Canon 1200D</value>
+                    <value>Canon 1000D</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <constraint name="cam:camera_price_range" type="MINMAX">
+            <parameter name="minValue">
+                <value>200</value>
+            </parameter>
+            <parameter name="maxValue">
+                <value>4000</value>
+            </parameter>
+        </constraint>
+    </constraints>
+
+    <types>
+        <type name="cam:cameraType">
+            <title>Camera Type</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="cam:cameraModel">
+                    <title>Camera model</title>
+                    <type>d:text</type>
+                    <constraints>
+                        <constraint ref="cam:camera_model_list" />
+                    </constraints>
+                </property>
+                <property name="cam:cameraPrice">
+                    <title>Camera price</title>
+                    <type>d:int</type>
+                    <constraints>
+                        <constraint ref="cam:camera_price_range" />
+                    </constraints>
+                </property>
+            </properties>
+        </type>
+    </types>
+
+</model>
